@@ -1,0 +1,53 @@
+
+.page {
+    display: grid;
+    grid-template-areas:
+        "entete"
+        "contenu"
+        "pied";
+}
+
+.page header {
+    grid-area: entete;
+}
+
+/* Erreur 1 : content ne correspond pas au nom contenu */
+.page main {
+    grid-area: contenu;
+}
+
+.page footer {
+    grid-area: pied;
+}
+
+.offres {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+/* Erreur 4 : le breakpoint 768px doit être avant 1024px */
+@media (min-width: 768px) {
+
+    .page {
+        grid-template-columns: 1fr 250px;
+
+        /* Erreurs 2, 3 et 5 : les deux colonnes doivent
+           être définies pour chaque ligne */
+        grid-template-areas:
+            "entete entete"
+            "contenu contenu"
+            "pied pied";
+    }
+
+    .offres {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .offres {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+

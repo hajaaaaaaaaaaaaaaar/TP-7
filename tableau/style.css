@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f1f5f9;
+    padding: 15px;
+}
+
+.entete,
+.menu,
+.contenu,
+.pied,
+.carte,
+.graphique,
+.recents {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.tableau {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+        "entete"
+        "menu"
+        "contenu"
+        "pied";
+
+    gap: 15px;
+}
+
+.entete {
+    grid-area: entete;
+    background-color: #102a43;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu {
+    grid-area: menu;
+    background-color: #243b53;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.contenu {
+    grid-area: contenu;
+    background-color: #e2e8f0;
+
+    display: grid;
+    gap: 15px;
+}
+.indicateurs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.carte {
+    background-color: white;
+    color: #102a43;
+    text-align: center;
+    font-weight: bold;
+    min-width: 0;
+}
+
+.graphique {
+    background-color: #bfdbfe;
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recents {
+    background-color: #c7d2fe;
+}
+
+.pied {
+    grid-area: pied;
+    background-color: #102a43;
+    color: white;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+
+    .tableau {
+        grid-template-columns: 220px minmax(0, 1fr);
+
+        grid-template-areas:
+            "entete entete"
+            "menu contenu"
+            "pied pied";
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .contenu {
+        min-width: 0;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .indicateurs {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .contenu {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .indicateurs {
+        grid-column: 1 / -1;
+    }
+
+    .graphique {
+        grid-column: 1;
+    }
+
+    .recents {
+        grid-column: 2;
+    }
+}
